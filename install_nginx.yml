@@ -1,7 +1,6 @@
 ---
 
-
-- hosts: all
+- hosts: homeserver
   become: true
   tasks:
 
@@ -11,4 +10,4 @@
 
   - name: install nginx server
     apt:
-      name: nginx
+      name: htop
