@@ -1,13 +1,24 @@
 ---
 
-- hosts: homeserver
+- hosts: all
+  become: true
+  pre_tasks:
+
+  - name: install updates
+    tags: always
+    apt:
+      upgrade: dist
+      update_cache: yes
+
+- hosts: production
   become: true
   tasks:
 
-  - name: update repository index
-    apt:
+  - name: install basic packages for Perfect Server
+    tags: nginx,php
+    package:
+      name: 
+        - htop_package
+        - fail2ban_package
+      state: latest
       update_cache: yes
-
-  - name: install nginx server
-    apt:
-      name: htop
